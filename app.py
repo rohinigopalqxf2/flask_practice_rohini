@@ -1,7 +1,6 @@
 from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///members.sqlite3'
 app.config['SECRET_KEY'] = "random string"
@@ -30,7 +29,6 @@ def new():
          flash('Please enter all the fields', 'error')
       else:
          member = members(request.form['name'], request.form['email'], request.form['dept'])
-
          db.session.add(member)
          db.session.commit()
          flash('Record was successfully added')
